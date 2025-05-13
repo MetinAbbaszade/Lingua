@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechPro X15 Ultra | ElectroShop</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>LINGUA</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../main/index.html">Home</a></li>
+                    <li><a href="../products/index.html">Products</a></li>
+                    <li><a href="../about/index.html">About</a></li>
+                    <li><a href="../contact/index.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="cart-icon">
+                <a href="../cart/index.html">
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+                <span id="cart-count">0</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="breadcrumb">
+            <a href="#">Home</a> &gt;
+            <a href="#">Smartphones</a> &gt;
+            <span>TechPro X15 Ultra</span>
+        </div>
+
+        <div class="product-container">
+            <!-- Product Gallery Section -->
+            <section class="product-gallery">
+                <div class="main-image">
+                    <img id="main-product-image" src="https://placehold.co/600x400?text=TechPro+X15+Ultra"
+                        alt="TechPro X15 Ultra Smartphone">
+                </div>
+                <div class="thumbnail-container">
+                    <img class="thumbnail active" src="https://placehold.co/600x400?text=TechPro+X15+Ultra"
+                        alt="TechPro X15 Ultra - Front" data-src="https://placehold.co/600x400?text=TechPro+X15+Ultra">
+                    <img class="thumbnail" src="https://placehold.co/600x400?text=Back+View"
+                        alt="TechPro X15 Ultra - Back" data-src="https://placehold.co/600x400?text=Back+View">
+                    <img class="thumbnail" src="https://placehold.co/600x400?text=Side+View"
+                        alt="TechPro X15 Ultra - Side" data-src="https://placehold.co/600x400?text=Side+View">
+                    <img class="thumbnail" src="https://placehold.co/600x400?text=Camera+Detail"
+                        alt="TechPro X15 Ultra - Camera" data-src="https://placehold.co/600x400?text=Camera+Detail">
+                </div>
+            </section>
+
+            <!-- Product Info Section -->
+            <section class="product-info">
+                <h1 class="product-title">TechPro X15 Ultra</h1>
+                <p class="product-tagline">The next generation of mobile technology at your fingertips</p>
+
+                <div class="rating-container">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <span class="rating-value">4.5/5</span>
+                    <span class="review-count">(128 reviews)</span>
+                </div>
+
+                <div class="price-container">
+                    <span class="current-price">$999.99</span>
+                    <span class="old-price">$1299.99</span>
+                    <span class="discount-badge">-23%</span>
+                </div>
+
+                <div class="stock-status in-stock">
+                    <i class="fas fa-check-circle"></i> In Stock (12 units)
+                </div>
+
+                <div class="description">
+                    <p class="short-desc">The TechPro X15 Ultra features a stunning 6.7" AMOLED display, 108MP camera
+                        system, and the latest processor for unmatched performance.</p>
+                    <div class="full-desc hidden">
+                        <p>Experience the pinnacle of smartphone innovation with the TechPro X15 Ultra. This flagship
+                            device combines cutting-edge technology with elegant design to deliver an exceptional user
+                            experience.</p>
+                        <p>The revolutionary camera system captures professional-quality images in any lighting
+                            conditions, while the all-day battery ensures you stay connected without interruption. With
+                            enhanced security features and lightning-fast 5G connectivity, the X15 Ultra represents the
+                            future of mobile technology.</p>
+                    </div>
+                    <button id="read-more" class="text-button">Read more</button>
+                </div>
+
+                <div class="color-options">
+                    <h3>Color:</h3>
+                    <div class="color-selector">
+                        <div class="color-option black active" data-color="Black"></div>
+                        <div class="color-option silver" data-color="Silver"></div>
+                        <div class="color-option blue" data-color="Blue"></div>
+                    </div>
+                    <span id="selected-color">Black</span>
+                </div>
+
+                <div class="storage-options">
+                    <h3>Storage:</h3>
+                    <div class="storage-selector">
+                        <button class="storage-option active" data-storage="128GB">128GB</button>
+                        <button class="storage-option" data-storage="256GB">256GB</button>
+                        <button class="storage-option" data-storage="512GB">512GB</button>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="add-to-cart" class="primary-button">
+                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                    </button>
+                    <button id="add-to-wishlist" class="secondary-button">
+                        <i class="far fa-heart"></i> Add to Wishlist
+                    </button>
+                </div>
+            </section>
+        </div>
+
+        <!-- Specifications Section -->
+        <section class="specifications">
+            <h2>Technical Specifications</h2>
+            <div class="specs-container">
+                <div class="spec-group">
+                    <h3>Display</h3>
+                    <ul>
+                        <li><strong>Type:</strong> AMOLED, 120Hz</li>
+                        <li><strong>Size:</strong> 6.7 inches</li>
+                        <li><strong>Resolution:</strong> 3200 x 1440 pixels</li>
+                        <li><strong>Protection:</strong> Gorilla Glass Victus</li>
+                    </ul>
+                </div>
+                <div class="spec-group">
+                    <h3>Performance</h3>
+                    <ul>
+                        <li><strong>Processor:</strong> OctaCore 3.2 GHz</li>
+                        <li><strong>RAM:</strong> 12GB LPDDR5</li>
+                        <li><strong>Storage:</strong> 128/256/512GB</li>
+                        <li><strong>OS:</strong> Android 14</li>
+                    </ul>
+                </div>
+                <div class="spec-group">
+                    <h3>Camera</h3>
+                    <ul>
+                        <li><strong>Main:</strong> 108MP, f/1.8</li>
+                        <li><strong>Ultra-wide:</strong> 48MP, f/2.2</li>
+                        <li><strong>Telephoto:</strong> 12MP, f/2.8, 5x optical zoom</li>
+                        <li><strong>Front:</strong> 32MP, f/2.4</li>
+                    </ul>
+                </div>
+                <div class="spec-group">
+                    <h3>Battery</h3>
+                    <ul>
+                        <li><strong>Capacity:</strong> 5000 mAh</li>
+                        <li><strong>Fast charging:</strong> 45W wired</li>
+                        <li><strong>Wireless:</strong> 15W</li>
+                        <li><strong>Reverse:</strong> 4.5W</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviews Section -->
+        <section class="reviews">
+            <h2>Customer Reviews</h2>
+            <div class="reviews-summary">
+                <div class="overall-rating">
+                    <span class="big-rating">4.5</span>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <span>Based on 128 reviews</span>
+                </div>
+                <div class="rating-breakdown">
+                    <div class="rating-bar">
+                        <span>5 stars</span>
+                        <div class="bar-container">
+                            <div class="bar" style="width: 70%"></div>
+                        </div>
+                        <span>70%</span>
+                    </div>
+                    <div class="rating-bar">
+                        <span>4 stars</span>
+                        <div class="bar-container">
+                            <div class="bar" style="width: 20%"></div>
+                        </div>
+                        <span>20%</span>
+                    </div>
+                    <div class="rating-bar">
+                        <span>3 stars</span>
+                        <div class="bar-container">
+                            <div class="bar" style="width: 5%"></div>
+                        </div>
+                        <span>5%</span>
+                    </div>
+                    <div class="rating-bar">
+                        <span>2 stars</span>
+                        <div class="bar-container">
+                            <div class="bar" style="width: 3%"></div>
+                        </div>
+                        <span>3%</span>
+                    </div>
+                    <div class="rating-bar">
+                        <span>1 star</span>
+                        <div class="bar-container">
+                            <div class="bar" style="width: 2%"></div>
+                        </div>
+                        <span>2%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="user-reviews">
+                <div class="review">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <img src="https://placehold.co/50x50?text=JS" alt="John Smith" class="reviewer-avatar">
+                            <div>
+                                <h4>John Smith</h4>
+                                <span class="review-date">October 15, 2025</span>
+                            </div>
+                        </div>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <h3 class="review-title">Best smartphone I've ever owned!</h3>
+                    <p class="review-text">I've been using the TechPro X15 Ultra for about a month now and I'm
+                        absolutely blown away by its performance. The camera quality is outstanding and battery life is
+                        exceptional. Highly recommended!</p>
+                </div>
+
+                <div class="review">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <img src="https://placehold.co/50x50?text=AJ" alt="Amanda Johnson" class="reviewer-avatar">
+                            <div>
+                                <h4>Amanda Johnson</h4>
+                                <span class="review-date">October 3, 2025</span>
+                            </div>
+                        </div>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                    </div>
+                    <h3 class="review-title">Great phone, but expensive</h3>
+                    <p class="review-text">The phone itself is amazing with incredible features. The camera and display
+                        are top-notch. My only complaint is the high price point, but I guess you get what you pay for.
+                        Taking off one star for that reason alone.</p>
+                </div>
+
+                <div class="review">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <img src="https://placehold.co/50x50?text=MC" alt="Michael Chen" class="reviewer-avatar">
+                            <div>
+                                <h4>Michael Chen</h4>
+                                <span class="review-date">September 28, 2025</span>
+                            </div>
+                        </div>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                    </div>
+                    <h3 class="review-title">Good but overheating issues</h3>
+                    <p class="review-text">I love the screen and camera quality, but I've experienced some overheating
+                        issues when gaming or using the camera for extended periods. Battery life is also not as
+                        advertised. Otherwise, it's a decent phone.</p>
+                </div>
+            </div>
+
+            <!-- Add Review Form -->
+            <div class="add-review">
+                <h3>Add Your Review</h3>
+                <form id="review-form">
+                    <div class="form-group">
+                        <label for="reviewer-name">Name:</label>
+                        <input type="text" id="reviewer-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="review-title">Review Title:</label>
+                        <input type="text" id="review-title" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Rating:</label>
+                        <div class="rating-selector">
+                            <i class="far fa-star" data-rating="1"></i>
+                            <i class="far fa-star" data-rating="2"></i>
+                            <i class="far fa-star" data-rating="3"></i>
+                            <i class="far fa-star" data-rating="4"></i>
+                            <i class="far fa-star" data-rating="5"></i>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="review-content">Review:</label>
+                        <textarea id="review-content" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="primary-button">Submit Review</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Related Products -->
+        <section class="related-products">
+            <h2>You Might Also Like</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="https://placehold.co/300x300?text=TechPro+X14" alt="TechPro X14">
+                    <h3>TechPro X14</h3>
+                    <div class="card-rating">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <span>4.0</span>
+                    </div>
+                    <p class="card-price">$799.99</p>
+                </div>
+                <div class="product-card">
+                    <img src="https://placehold.co/300x300?text=TechPro+Watch" alt="TechPro Smart Watch">
+                    <h3>TechPro Smart Watch</h3>
+                    <div class="card-rating">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span>4.5</span>
+                    </div>
+                    <p class="card-price">$349.99</p>
+                </div>
+                <div class="product-card">
+                    <img src="https://placehold.co/300x300?text=TechPro+Buds" alt="TechPro Wireless Earbuds">
+                    <h3>TechPro Wireless Earbuds</h3>
+                    <div class="card-rating">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <span>4.0</span>
+                    </div>
+                    <p class="card-price">$129.99</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>ElectroShop</h3>
+                    <p>Your trusted source for the latest and greatest in technology</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">Returns Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Connect</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Lingua. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
