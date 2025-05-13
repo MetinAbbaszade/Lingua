@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechCart - Your Shopping Cart</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>TechCart</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#"><i class="fas fa-store"></i> Shop</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-shopping-cart"></i> Cart</a></li>
+                    <li><a href="#"><i class="fas fa-user"></i> Account</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1 class="page-title">Your Shopping Cart</h1>
+        
+        <div class="cart-container">
+            <div class="cart-items">
+                <!-- Cart items will be populated by JavaScript -->
+                <!-- Empty state message -->
+                <div id="empty-cart" class="hidden">
+                    <div class="empty-cart-content">
+                        <i class="fas fa-shopping-cart fa-4x"></i>
+                        <h2>Your cart is empty</h2>
+                        <p>Looks like you haven't added any items to your cart yet.</p>
+                        <button id="start-shopping" class="btn btn-primary">Start Shopping</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cart-summary">
+                <h2>Order Summary</h2>
+                <div class="summary-item">
+                    <span>Items (<span id="total-items">0</span>)</span>
+                    <span id="subtotal">$0.00</span>
+                </div>
+                <div class="summary-item">
+                    <span>Shipping</span>
+                    <span id="shipping">$0.00</span>
+                </div>
+                <div class="summary-item">
+                    <span>Tax</span>
+                    <span id="tax">$0.00</span>
+                </div>
+                <div class="summary-divider"></div>
+                <div class="summary-item total">
+                    <span>Total</span>
+                    <span id="total">$0.00</span>
+                </div>
+                <button id="checkout" class="btn btn-primary btn-block">Proceed to Checkout</button>
+                <button id="continue-shopping" class="btn btn-secondary btn-block">Continue Shopping</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Lingua Electronics. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Modal for checkout -->
+    <div id="checkout-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Thank You!</h2>
+            <p>This is a demo project. In a real application, this would proceed to the checkout process.</p>
+            <button class="btn btn-primary modal-btn">Close</button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
