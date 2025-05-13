@@ -16,50 +16,7 @@ const carouselIndicators = document.querySelector('.carousel-indicators');
 const carouselPlayToggle = document.querySelector('.carousel-play-toggle');
 
 
-const products = [
-    {
-        id: 1,
-        name: "iPhone 14 Pro",
-        price: 999.99,
-        image: "https://images.unsplash.com/photo-1678652197831-2d180705cd2c?auto=format&fit=crop&q=80&w=500",
-        rating: 4.8
-    },
-    {
-        id: 2,
-        name: "Samsung Galaxy S23",
-        price: 899.99,
-        image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=3024&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        rating: 4.7
-    },
-    {
-        id: 3,
-        name: "MacBook Pro M2",
-        price: 1499.99,
-        image: "https://images.unsplash.com/photo-1569770218135-bea267ed7e84?auto=format&fit=crop&q=80&w=500",
-        rating: 4.9
-    },
-    {
-        id: 4,
-        name: "Sony WH-1000XM5",
-        price: 349.99,
-        image: "https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?auto=format&fit=crop&q=80&w=500",
-        rating: 4.8
-    },
-    {
-        id: 5,
-        name: "iPad Air",
-        price: 599.99,
-        image: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&q=80&w=500",
-        rating: 4.6
-    },
-    {
-        id: 6,
-        name: "Google Pixel 7",
-        price: 699.99,
-        image: "https://images.unsplash.com/photo-1580910051074-3eb694886505?q=80&w=3465&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        rating: 4.5
-    }
-];
+
 
 
 let cart = [];
@@ -81,10 +38,10 @@ const carouselState = {
 };
 
 
-function init() {
+async function init() {
     loadTheme();
     loadCart();
-    renderProducts();
+    renderProducts(await fetchData());
     loadSavedEmail();
     setupEventListeners();
     setupScrollAnimation();
@@ -154,23 +111,21 @@ function addToCart(productId) {
 }
 
 
-function renderProducts() {
+function renderProducts(products) {
     if (!productsGrid) return;
-
-
     productsGrid.setAttribute('role', 'list');
     productsGrid.setAttribute('aria-label', 'Featured Products');
 
     productsGrid.innerHTML = products.map(product => `
         <div class="product-card scroll-reveal" role="listitem">
-            <img src="${product.image}" alt="${product.name}" class="product-img">
+            <img src="${product.images[0].full}" alt="${product.name}" class="product-img">
             <div class="product-info">
                 <h3 class="product-name">${product.name}</h3>
                 <div class="product-rating" aria-label="Product rating: ${product.rating} out of 5 stars">
                     ${getRatingStars(product.rating)}
                 </div>
-                <p class="product-price" aria-label="Price: $${product.price.toFixed(2)}">
-                    $${product.price.toFixed(2)}
+                <p class="product-price" aria-label="Price: $${product.basePrice}">
+                    $${product.basePrice}
                 </p>
                 <button class="add-to-cart-btn" data-id="${product.id}" aria-label="Add ${product.name} to cart">
                     <i class="fas fa-shopping-cart"></i> Add to Cart
@@ -188,7 +143,7 @@ function renderProducts() {
     });
 
 
-    setupCarousel();
+    setupCarousel(products);
 }
 
 
@@ -225,12 +180,11 @@ function loadSavedEmail() {
 }
 
 
-function setupCarousel() {
+function setupCarousel(products) {
     if (!productsGrid || !carouselViewport) return;
 
 
     updateSlidesPerView();
-
 
     carouselState.totalSlides = Math.max(1, Math.ceil(products.length / carouselState.slidesPerView));
 
@@ -636,3 +590,10 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+
+const fetchData = async () => {
+    const res = await fetch('./db/data.json')
+    const data = await res.json()
+    return data
+}
