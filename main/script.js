@@ -224,11 +224,7 @@ function loadSavedEmail() {
     }
 }
 
-/**
- * Set up the carousel functionality
- * Calculates the number of visible slides based on screen width
- * Initializes the carousel state and creates indicator dots
- */
+
 function setupCarousel() {
     if (!productsGrid || !carouselViewport) return;
 
@@ -269,10 +265,7 @@ function setupCarousel() {
     updateCarouselPosition();
 }
 
-/**
- * Updates the slides per view based on screen width
- * Responsive design: 4 slides on desktop, 3 on large tablets, 2 on tablets, 1 on mobile
- */
+
 function updateSlidesPerView() {
     const width = window.innerWidth;
 
@@ -287,11 +280,7 @@ function updateSlidesPerView() {
     }
 }
 
-/**
- * Updates the carousel position based on current slide
- * Calculates the translate X value and applies it with CSS transform
- * Updates active indicator dot
- */
+
 function updateCarouselPosition() {
     if (!productsGrid || !carouselViewport) return;
 
@@ -320,38 +309,25 @@ function updateCarouselPosition() {
     }
 }
 
-/**
- * Navigate to a specific slide
- * @param {number} index - The slide index to navigate to
- */
+/* @param {number} index  */
 function goToSlide(index) {
 
     carouselState.currentSlide = Math.max(0, Math.min(index, carouselState.totalSlides - 1));
     updateCarouselPosition();
 }
 
-/**
- * Navigate to the next slide
- * Loops back to the first slide if at the end
- */
 function nextSlide() {
     carouselState.currentSlide = (carouselState.currentSlide + 1) % carouselState.totalSlides;
     updateCarouselPosition();
 }
 
-/**
- * Navigate to the previous slide
- * Loops to the last slide if at the beginning
- */
+
 function prevSlide() {
     carouselState.currentSlide = (carouselState.currentSlide - 1 + carouselState.totalSlides) % carouselState.totalSlides;
     updateCarouselPosition();
 }
 
-/**
- * Start auto-play functionality
- * Automatically advances the carousel every few seconds
- */
+
 function startAutoPlay() {
     if (!carouselState.autoPlay) return;
 
@@ -366,9 +342,6 @@ function startAutoPlay() {
     }
 }
 
-/**
- * Pause auto-play functionality
- */
 function pauseAutoPlay() {
     clearInterval(carouselState.autoPlayTimer);
 
@@ -378,10 +351,7 @@ function pauseAutoPlay() {
     }
 }
 
-/**
- * Restart auto-play timer
- * Used when manually navigating to reset the timer
- */
+
 function restartAutoPlay() {
     if (carouselState.autoPlay) {
         clearInterval(carouselState.autoPlayTimer);
@@ -389,9 +359,7 @@ function restartAutoPlay() {
     }
 }
 
-/**
- * Toggle auto-play on/off
- */
+
 function toggleAutoPlay() {
     carouselState.autoPlay = !carouselState.autoPlay;
 
@@ -402,9 +370,6 @@ function toggleAutoPlay() {
     }
 }
 
-/**
- * Setup touch and drag events for the carousel
- */
 function setupCarouselDragEvents() {
     if (!productsGrid || !carouselViewport) return;
 
@@ -427,9 +392,6 @@ function setupCarouselDragEvents() {
     });
 }
 
-/**
- * Handle touch start event
- */
 function touchStart(e) {
     carouselState.startPos = e.touches[0].clientX;
     carouselState.isDragging = true;
@@ -441,9 +403,6 @@ function touchStart(e) {
     }
 }
 
-/**
- * Handle touch move event
- */
 function touchMove(e) {
     if (!carouselState.isDragging) return;
 
@@ -455,9 +414,6 @@ function touchMove(e) {
     carouselState.currentTranslate = carouselState.prevTranslate + diff;
 }
 
-/**
- * Handle touch end event
- */
 function touchEnd() {
     carouselState.isDragging = false;
     cancelAnimationFrame(carouselState.animationID);
@@ -483,9 +439,6 @@ function touchEnd() {
     }
 }
 
-/**
- * Handle drag start event (mouse)
- */
 function dragStart(e) {
     carouselState.startPos = e.clientX;
     carouselState.isDragging = true;
@@ -500,9 +453,6 @@ function dragStart(e) {
     }
 }
 
-/**
- * Handle drag move event (mouse)
- */
 function dragMove(e) {
     if (!carouselState.isDragging) return;
 
@@ -511,9 +461,6 @@ function dragMove(e) {
     carouselState.currentTranslate = carouselState.prevTranslate + diff;
 }
 
-/**
- * Handle drag end event (mouse)
- */
 function dragEnd() {
     if (!carouselState.isDragging) return;
 
@@ -544,9 +491,7 @@ function dragEnd() {
     }
 }
 
-/**
- * Animation function for smooth dragging
- */
+
 function animation() {
     if (!carouselState.isDragging) return;
 

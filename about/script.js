@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Mobile navigation toggle
+    
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
 
@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
         navLinks.classList.toggle('active');
     });
 
-    // Scroll animation using Intersection Observer
+    
     const sections = document.querySelectorAll('.section');
 
     const options = {
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
         observer.observe(section);
     });
 
-    // Smooth scrolling for navigation links
+    
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     behavior: 'smooth'
                 });
 
-                // Close mobile menu if open
+                
                 if (navLinks.classList.contains('active')) {
                     navLinks.classList.remove('active');
                 }

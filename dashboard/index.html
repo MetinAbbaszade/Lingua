@@ -12,7 +12,7 @@
 
 <body>
     <div class="dashboard-container">
-        <!-- Mobile Header with Menu Toggle -->
+        
         <header class="mobile-header">
             <div class="logo">LINGUA</div>
             <button id="mobile-menu-toggle" aria-label="Toggle menu">
@@ -20,7 +20,7 @@
             </button>
         </header>
 
-        <!-- Sidebar Navigation (Desktop) / Dropdown (Mobile) -->
+        
         <nav class="sidebar" id="sidebar">
             <div class="user-profile">
                 <div class="user-avatar">
@@ -50,31 +50,33 @@
                     <span>Change Password</span>
                 </li>
                 <li id="logout-button">
-                    <span class="material-symbols-outlined">logout</span>
+                    <a href="../register/index.html">
+                        <span class="material-symbols-outlined">logout</span>
+                    </a>
                     <span>Logout</span>
                 </li>
             </ul>
         </nav>
 
-        <!-- Main Content Area -->
+        
         <main class="main-content">
-            <!-- Orders Section -->
+            
             <section id="orders" class="dashboard-section active">
                 <h2>My Orders</h2>
                 <div class="orders-list">
-                    <!-- Orders will be populated by JavaScript -->
+                    
                 </div>
             </section>
 
-            <!-- Wishlist Section -->
+            
             <section id="wishlist" class="dashboard-section">
                 <h2>My Wishlist</h2>
                 <div class="wishlist-container">
-                    <!-- Wishlist items will be populated by JavaScript -->
+                    
                 </div>
             </section>
 
-            <!-- Personal Information Section -->
+            
             <section id="personal-info" class="dashboard-section">
                 <h2>Personal Information</h2>
                 <form id="personal-info-form">
@@ -99,7 +101,7 @@
                 <div id="personal-info-message" class="message"></div>
             </section>
 
-            <!-- Change Password Section -->
+            
             <section id="change-password" class="dashboard-section">
                 <h2>Change Password</h2>
                 <form id="password-form">

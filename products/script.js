@@ -1,9 +1,3 @@
-/**
- * TechElite Shop Page JavaScript
- * This script handles product rendering, filtering, sorting, and responsive behaviors
- */
-
-// Product data array - simulating data that would typically come from a database
 const products = [
     {
         id: 1,
@@ -127,7 +121,7 @@ const products = [
     }
 ];
 
-// Store filter state
+
 const filterState = {
     categories: [],
     brands: [],
@@ -138,7 +132,7 @@ const filterState = {
     sortBy: 'featured'
 };
 
-// DOM Elements
+
 const productsGrid = document.getElementById('products-grid');
 const productsCount = document.getElementById('products-count');
 const noProductsMessage = document.getElementById('no-products-message');
@@ -154,39 +148,33 @@ const clearFiltersBtn = document.getElementById('clear-filters');
 const resetFiltersBtn = document.getElementById('reset-filters');
 const sortSelect = document.getElementById('sort-select');
 
-// Category and brand checkboxes
+
 const categoryCheckboxes = document.querySelectorAll('input[name="category"]');
 const brandCheckboxes = document.querySelectorAll('input[name="brand"]');
 const ratingCheckboxes = document.querySelectorAll('input[name="rating"]');
 
-/**
- * Initialize the page
- */
 function init() {
     renderProducts(products);
     setupEventListeners();
 }
 
-/**
- * Set up all event listeners
- */
 function setupEventListeners() {
-    // Mobile menu toggle
+    
     menuToggle.addEventListener('click', () => {
         document.querySelector('nav').classList.toggle('active');
     });
 
-    // Mobile filter toggle
+    
     filterToggleBtn.addEventListener('click', () => {
         sidebar.classList.add('active');
     });
 
-    // Close sidebar
+    
     closeSidebarBtn.addEventListener('click', () => {
         sidebar.classList.remove('active');
     });
 
-    // Category filter
+    
     categoryCheckboxes.forEach(checkbox => {
         checkbox.addEventListener('change', () => {
             updateCategoryFilters();
@@ -194,7 +182,7 @@ function setupEventListeners() {
         });
     });
 
-    // Brand filter
+    
     brandCheckboxes.forEach(checkbox => {
         checkbox.addEventListener('change', () => {
             updateBrandFilters();
@@ -202,7 +190,7 @@ function setupEventListeners() {
         });
     });
 
-    // Rating filter
+    
     ratingCheckboxes.forEach(checkbox => {
         checkbox.addEventListener('change', () => {
             updateRatingFilter();
@@ -210,29 +198,29 @@ function setupEventListeners() {
         });
     });
 
-    // Price range filter
+    
     applyPriceBtn.addEventListener('click', () => {
         updatePriceFilter();
         applyFilters();
     });
 
-    // In stock filter
+    
     inStockCheckbox.addEventListener('change', () => {
         filterState.inStockOnly = inStockCheckbox.checked;
         applyFilters();
     });
 
-    // Sort products
+    
     sortSelect.addEventListener('change', () => {
         filterState.sortBy = sortSelect.value;
         applyFilters();
     });
 
-    // Clear all filters
+    
     clearFiltersBtn.addEventListener('click', clearAllFilters);
     resetFiltersBtn.addEventListener('click', clearAllFilters);
 
-    // Close filter sidebar when clicking outside on mobile
+    
     document.addEventListener('click', (e) => {
         if (window.innerWidth <= 768 &&
             sidebar.classList.contains('active') &&
@@ -242,7 +230,7 @@ function setupEventListeners() {
         }
     });
 
-    // Add to cart functionality
+    
     document.addEventListener('click', (e) => {
         if (e.target.classList.contains('add-to-cart') ||
             e.target.parentElement.classList.contains('add-to-cart')) {
@@ -251,23 +239,20 @@ function setupEventListeners() {
     });
 }
 
-/**
- * Update the cart count and show animation
- */
 function updateCart(e) {
-    // Get the cart count element
+    
     const cartCount = document.querySelector('.cart-count');
-    // Update cart count
+    
     let count = parseInt(cartCount.textContent);
     cartCount.textContent = count + 1;
 
-    // Animation
+    
     cartCount.classList.add('bump');
     setTimeout(() => {
         cartCount.classList.remove('bump');
     }, 300);
 
-    // Change button text temporarily
+    
     const button = e.target.closest('.add-to-cart');
     const originalText = button.innerHTML;
     button.innerHTML = '<i class="fas fa-check"></i> Added';
@@ -279,27 +264,19 @@ function updateCart(e) {
     }, 2000);
 }
 
-/**
- * Update the category filter state
- */
 function updateCategoryFilters() {
     filterState.categories = Array.from(categoryCheckboxes)
         .filter(checkbox => checkbox.checked)
         .map(checkbox => checkbox.value);
 }
 
-/**
- * Update the brand filter state
- */
 function updateBrandFilters() {
     filterState.brands = Array.from(brandCheckboxes)
         .filter(checkbox => checkbox.checked)
         .map(checkbox => checkbox.value);
 }
 
-/**
- * Update the rating filter state
- */
+
 function updateRatingFilter() {
     const checkedRatings = Array.from(ratingCheckboxes)
         .filter(checkbox => checkbox.checked)
@@ -308,9 +285,6 @@ function updateRatingFilter() {
     filterState.minRating = checkedRatings.length > 0 ? Math.min(...checkedRatings) : 0;
 }
 
-/**
- * Update the price filter state
- */
 function updatePriceFilter() {
     const minPrice = minPriceInput.value ? parseInt(minPriceInput.value) : null;
     const maxPrice = maxPriceInput.value ? parseInt(maxPriceInput.value) : null;
@@ -319,25 +293,22 @@ function updatePriceFilter() {
     filterState.priceMax = maxPrice;
 }
 
-/**
- * Apply all filters to the products
- */
 function applyFilters() {
     let filteredProducts = [...products];
 
-    // Filter by category
+    
     if (filterState.categories.length > 0) {
         filteredProducts = filteredProducts.filter(product =>
             filterState.categories.includes(product.category));
     }
 
-    // Filter by brand
+    
     if (filterState.brands.length > 0) {
         filteredProducts = filteredProducts.filter(product =>
             filterState.brands.includes(product.brand));
     }
 
-    // Filter by price
+    
     if (filterState.priceMin !== null) {
         filteredProducts = filteredProducts.filter(product =>
             product.price >= filterState.priceMin);
@@ -348,27 +319,24 @@ function applyFilters() {
             product.price <= filterState.priceMax);
     }
 
-    // Filter by stock
+    
     if (filterState.inStockOnly) {
         filteredProducts = filteredProducts.filter(product => product.inStock);
     }
 
-    // Filter by rating
+    
     if (filterState.minRating > 0) {
         filteredProducts = filteredProducts.filter(product =>
             product.rating >= filterState.minRating);
     }
 
-    // Apply sorting
+    
     filteredProducts = sortProducts(filteredProducts, filterState.sortBy);
 
-    // Render the filtered products
+    
     renderProducts(filteredProducts);
 }
 
-/**
- * Sort products based on selected criteria
- */
 function sortProducts(products, sortBy) {
     const sortedProducts = [...products];
 
@@ -383,31 +351,28 @@ function sortProducts(products, sortBy) {
             sortedProducts.sort((a, b) => b.rating - a.rating);
             break;
         default:
-            // featured - no specific sort, use default order
+            
             break;
     }
 
     return sortedProducts;
 }
 
-/**
- * Clear all applied filters
- */
 function clearAllFilters() {
-    // Reset checkboxes
+    
     categoryCheckboxes.forEach(checkbox => checkbox.checked = false);
     brandCheckboxes.forEach(checkbox => checkbox.checked = false);
     ratingCheckboxes.forEach(checkbox => checkbox.checked = false);
     inStockCheckbox.checked = false;
 
-    // Reset inputs
+    
     minPriceInput.value = '';
     maxPriceInput.value = '';
 
-    // Reset sort
+    
     sortSelect.value = 'featured';
 
-    // Reset filter state
+    
     filterState.categories = [];
     filterState.brands = [];
     filterState.priceMin = null;
@@ -416,16 +381,12 @@ function clearAllFilters() {
     filterState.minRating = 0;
     filterState.sortBy = 'featured';
 
-    // Re-render products
+    
     renderProducts(products);
 
-    // Close mobile sidebar
+    
     sidebar.classList.remove('active');
 }
-
-/**
- * Render products to the product grid
- */
 function renderProducts(productsToRender) {
     productsGrid.innerHTML = '';
     productsCount.textContent = `(${productsToRender.length})`;
@@ -446,14 +407,11 @@ function renderProducts(productsToRender) {
     });
 }
 
-/**
- * Create a product card element
- */
 function createProductCard(product) {
     const card = document.createElement('div');
     card.classList.add('product-card');
 
-    // Generate star rating HTML
+    
     const ratingStars = generateRatingStars(product.rating);
 
     card.innerHTML = `
@@ -480,9 +438,6 @@ function createProductCard(product) {
     return card;
 }
 
-/**
- * Generate HTML for star ratings
- */
 function generateRatingStars(rating) {
     const fullStars = Math.floor(rating);
     const halfStar = rating % 1 >= 0.5;
@@ -490,17 +445,17 @@ function generateRatingStars(rating) {
 
     let starsHTML = '';
 
-    // Add full stars
+    
     for (let i = 0; i < fullStars; i++) {
         starsHTML += '<i class="fas fa-star"></i>';
     }
 
-    // Add half star if needed
+    
     if (halfStar) {
         starsHTML += '<i class="fas fa-star-half-alt"></i>';
     }
 
-    // Add empty stars
+    
     for (let i = 0; i < emptyStars; i++) {
         starsHTML += '<i class="far fa-star"></i>';
     }
@@ -508,5 +463,5 @@ function generateRatingStars(rating) {
     return starsHTML;
 }
 
-// Initialize the page when the DOM is fully loaded
+
 document.addEventListener('DOMContentLoaded', init);

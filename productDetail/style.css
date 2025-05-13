@@ -1,4 +1,4 @@
-/* Global Styles */
+
 :root {
     --primary-color: #3498db;
     --secondary-color: #2980b9;
@@ -53,7 +53,7 @@ img {
     display: none;
 }
 
-/* Header Styles */
+
 header {
     background-color: var(--white);
     box-shadow: var(--shadow);
@@ -118,7 +118,7 @@ nav ul li a:hover {
     justify-content: center;
 }
 
-/* Main Content */
+
 main {
     padding: 2rem 0;
 }
@@ -138,7 +138,7 @@ main {
     color: var(--primary-color);
 }
 
-/* Product Container */
+
 .product-container {
     display: grid;
     grid-template-columns: 1fr;
@@ -146,7 +146,7 @@ main {
     margin-bottom: 3rem;
 }
 
-/* Product Gallery */
+
 .product-gallery {
     background-color: var(--white);
     padding: 1rem;
@@ -199,7 +199,7 @@ main {
     opacity: 1;
 }
 
-/* Product Info */
+
 .product-info {
     background-color: var(--white);
     padding: 1.5rem;
@@ -408,7 +408,7 @@ main {
     margin-right: 0.5rem;
 }
 
-/* Specifications */
+
 .specifications {
     background-color: var(--white);
     padding: 1.5rem;
@@ -437,7 +437,7 @@ main {
     font-size: 0.95rem;
 }
 
-/* Reviews */
+
 .reviews {
     background-color: var(--white);
     padding: 1.5rem;
@@ -587,7 +587,7 @@ main {
     color: #f39c12;
 }
 
-/* Related Products */
+
 .related-products {
     margin-bottom: 3rem;
 }
@@ -643,7 +643,7 @@ main {
     color: var(--primary-color);
 }
 
-/* Footer */
+
 footer {
     background-color: #333;
     color: var(--white);
@@ -709,7 +709,7 @@ footer {
     color: #999;
 }
 
-/* Responsive Styles */
+
 @media (min-width: 768px) {
     .product-container {
         grid-template-columns: 1fr 1fr;

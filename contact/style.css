@@ -1,4 +1,4 @@
-/* Global Styles */
+
 :root {
     --primary-color: #2563eb;
     --secondary-color: #1e40af;
@@ -33,7 +33,7 @@ body {
     padding: 0 20px;
 }
 
-/* Header Styles */
+
 header {
     background-color: var(--bg-color);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -75,7 +75,7 @@ nav ul li a.active {
     color: var(--primary-color);
 }
 
-/* Hero Section */
+
 .hero {
     background-color: var(--primary-color);
     color: white;
@@ -94,7 +94,7 @@ nav ul li a.active {
     font-size: 18px;
 }
 
-/* Contact Section */
+
 .contact-container {
     padding: 60px 0;
 }
@@ -106,7 +106,7 @@ nav ul li a.active {
     margin-top: 20px;
 }
 
-/* Form Styles */
+
 .contact-form {
     flex: 1 1 500px;
     background-color: var(--bg-color);
@@ -184,7 +184,7 @@ nav ul li a.active {
     background-color: var(--secondary-color);
 }
 
-/* Contact Info Styles */
+
 .contact-info {
     flex: 1 1 400px;
     background-color: var(--bg-color);
@@ -221,7 +221,7 @@ nav ul li a.active {
     color: var(--light-text);
 }
 
-/* Map Styles */
+
 .map-container {
     margin-top: 30px;
 }
@@ -242,7 +242,7 @@ nav ul li a.active {
     height: 100%;
 }
 
-/* Footer Styles */
+
 footer {
     background-color: var(--bg-color);
     color: var(--light-text);
@@ -251,7 +251,7 @@ footer {
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
 }
 
-/* Media Queries */
+
 @media (max-width: 768px) {
     header .container {
         flex-direction: column;

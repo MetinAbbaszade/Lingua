@@ -1,4 +1,4 @@
-// Sample product data for demo (in a real app, this would come from a database)
+
 const sampleProducts = [
     {
         id: 1,
@@ -20,7 +20,7 @@ const sampleProducts = [
     }
 ];
 
-// DOM Elements
+
 const cartItemsContainer = document.querySelector('.cart-items');
 const emptyCartMessage = document.getElementById('empty-cart');
 const totalItemsElement = document.getElementById('total-items');
@@ -35,25 +35,25 @@ const checkoutModal = document.getElementById('checkout-modal');
 const closeModal = document.querySelector('.close-modal');
 const modalBtn = document.querySelector('.modal-btn');
 
-// Cart data
+
 let cart = [];
 
-// Initialize the page
+
 function init() {
     loadCartFromStorage();
     renderCart();
     setupEventListeners();
 }
 
-// Load cart data from localStorage
+
 function loadCartFromStorage() {
     const storedCart = localStorage.getItem('cart');
     
     if (storedCart) {
         cart = JSON.parse(storedCart);
     } else {
-        // For demo purposes, initialize with sample data if cart is empty
-        // In a real app, you'd skip this and have an empty cart
+        
+        
         cart = [
             { ...sampleProducts[0], quantity: 1 },
             { ...sampleProducts[1], quantity: 2 }
@@ -62,37 +62,37 @@ function loadCartFromStorage() {
     }
 }
 
-// Save cart to localStorage
+
 function saveCartToStorage() {
     localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-// Display cart items and update summary
+
 function renderCart() {
-    // Clear existing content
+    
     cartItemsContainer.innerHTML = '';
     
-    // Check if cart is empty
+    
     if (cart.length === 0) {
         emptyCartMessage.classList.remove('hidden');
         updateSummary();
         return;
     }
     
-    // Hide empty cart message if cart has items
+    
     emptyCartMessage.classList.add('hidden');
     
-    // Render each cart item
+    
     cart.forEach(item => {
         const cartItemElement = createCartItemElement(item);
         cartItemsContainer.appendChild(cartItemElement);
     });
     
-    // Update order summary
+    
     updateSummary();
 }
 
-// Create HTML for a cart item
+
 function createCartItemElement(item) {
     const cartItem = document.createElement('div');
     cartItem.classList.add('cart-item');
@@ -122,21 +122,21 @@ function createCartItemElement(item) {
     return cartItem;
 }
 
-// Update the order summary section
+
 function updateSummary() {
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
     const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
     
-    // Calculate shipping (free over $100, otherwise $10)
+    
     const shipping = subtotal > 100 ? 0 : 10;
     
-    // Calculate tax (8.25% of subtotal)
+    
     const tax = subtotal * 0.0825;
     
-    // Calculate total
+    
     const total = subtotal + shipping + tax;
     
-    // Update DOM elements
+    
     totalItemsElement.textContent = totalItems;
     subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
     shippingElement.textContent = shipping === 0 ? 'FREE' : `$${shipping.toFixed(2)}`;
@@ -144,44 +144,44 @@ function updateSummary() {
     totalElement.textContent = `$${total.toFixed(2)}`;
 }
 
-// Update item quantity
+
 function updateQuantity(productId, newQuantity) {
-    // Ensure quantity is at least 1
+    
     newQuantity = Math.max(1, newQuantity);
     
-    // Find the item in the cart and update its quantity
+    
     const itemIndex = cart.findIndex(item => item.id === productId);
     
     if (itemIndex !== -1) {
         cart[itemIndex].quantity = newQuantity;
         
-        // Save updated cart to localStorage
+        
         saveCartToStorage();
         
-        // Re-render the cart
+        
         renderCart();
     }
 }
 
-// Remove item from cart
+
 function removeItem(productId) {
-    // Filter out the item with the given ID
+    
     cart = cart.filter(item => item.id !== productId);
     
-    // Save updated cart to localStorage
+    
     saveCartToStorage();
     
-    // Re-render the cart
+    
     renderCart();
 }
 
-// Set up all event listeners
+
 function setupEventListeners() {
-    // Event delegation for cart items (quantity changes and removing)
+    
     cartItemsContainer.addEventListener('click', function(e) {
         const target = e.target;
         
-        // Handle quantity decrease button
+        
         if (target.classList.contains('decrease')) {
             const quantityInput = target.nextElementSibling;
             const productId = parseInt(quantityInput.dataset.id);
@@ -189,7 +189,7 @@ function setupEventListeners() {
             updateQuantity(productId, newQuantity);
         }
         
-        // Handle quantity increase button
+        
         if (target.classList.contains('increase')) {
             const quantityInput = target.previousElementSibling;
             const productId = parseInt(quantityInput.dataset.id);
@@ -197,7 +197,7 @@ function setupEventListeners() {
             updateQuantity(productId, newQuantity);
         }
         
-        // Handle remove button
+        
         if (target.classList.contains('remove-item') || 
             (target.parentElement && target.parentElement.classList.contains('remove-item'))) {
             const button = target.classList.contains('remove-item') ? target : target.parentElement;
@@ -206,13 +206,13 @@ function setupEventListeners() {
         }
     });
     
-    // Handle direct input of quantity
+    
     cartItemsContainer.addEventListener('change', function(e) {
         if (e.target.classList.contains('quantity-input')) {
             const productId = parseInt(e.target.dataset.id);
             let newQuantity = parseInt(e.target.value);
             
-            // Validate input
+            
             if (isNaN(newQuantity) || newQuantity < 1) {
                 newQuantity = 1;
                 e.target.value = 1;
@@ -222,40 +222,40 @@ function setupEventListeners() {
         }
     });
     
-    // Continue shopping button
+    
     continueShoppingBtn.addEventListener('click', function() {
-        // In a real app, this would navigate to the products page
+        
         alert('This would navigate to the products page in a real application.');
     });
     
-    // Start shopping button (when cart is empty)
+    
     startShoppingBtn.addEventListener('click', function() {
-        // In a real app, this would navigate to the products page
+        
         alert('This would navigate to the products page in a real application.');
     });
     
-    // Checkout button
+    
     checkoutBtn.addEventListener('click', function() {
         if (cart.length === 0) {
             alert('Your cart is empty. Add some products before checking out.');
             return;
         }
         
-        // Show checkout modal
+        
         checkoutModal.style.display = 'flex';
     });
     
-    // Close modal
+    
     closeModal.addEventListener('click', function() {
         checkoutModal.style.display = 'none';
     });
     
-    // Modal button
+    
     modalBtn.addEventListener('click', function() {
         checkoutModal.style.display = 'none';
     });
     
-    // Close modal when clicking outside
+    
     window.addEventListener('click', function(e) {
         if (e.target === checkoutModal) {
             checkoutModal.style.display = 'none';
@@ -263,5 +263,5 @@ function setupEventListeners() {
     });
 }
 
-// Initialize when the DOM is fully loaded
+
 document.addEventListener('DOMContentLoaded', init);

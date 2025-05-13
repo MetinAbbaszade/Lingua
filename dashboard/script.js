@@ -1,4 +1,4 @@
-// Sample data
+
 const ordersData = [
     {
         id: "ORD-2023-001",
@@ -66,7 +66,7 @@ const userProfileData = {
     address: "123 Tech Street, Digital City, DC 10101"
 };
 
-// DOM Elements
+
 const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
 const sidebar = document.getElementById('sidebar');
 const navLinks = document.querySelectorAll('.nav-links li[data-section]');
@@ -78,7 +78,7 @@ const passwordForm = document.getElementById('password-form');
 const personalInfoMessage = document.getElementById('personal-info-message');
 const passwordMessage = document.getElementById('password-message');
 
-// Initialize the dashboard
+
 function initDashboard() {
     loadOrders();
     loadWishlist();
@@ -86,7 +86,7 @@ function initDashboard() {
     setupEventListeners();
 }
 
-// Load orders data
+
 function loadOrders() {
     ordersList.innerHTML = '';
 
@@ -123,7 +123,7 @@ function loadOrders() {
 
         ordersList.appendChild(orderElement);
 
-        // Add click event to toggle order details
+        
         const orderHeader = orderElement.querySelector('.order-header');
         const orderDetails = orderElement.querySelector('.order-details');
         const expandIcon = orderElement.querySelector('.expand-icon');
@@ -135,9 +135,9 @@ function loadOrders() {
     });
 }
 
-// Load wishlist items
+
 function loadWishlist() {
-    // First check localStorage
+    
     const storedWishlist = JSON.parse(localStorage.getItem('wishlist')) || wishlistData;
 
     wishlistContainer.innerHTML = '';
@@ -159,15 +159,15 @@ function loadWishlist() {
         wishlistContainer.appendChild(wishlistItem);
     });
 
-    // Save initial wishlist to localStorage if not already there
+    
     if (!localStorage.getItem('wishlist')) {
         localStorage.setItem('wishlist', JSON.stringify(storedWishlist));
     }
 }
 
-// Load user profile data
+
 function loadUserProfile() {
-    // Check localStorage for saved user data
+    
     const storedUserData = JSON.parse(localStorage.getItem('userData')) || userProfileData;
 
     document.getElementById('fullName').value = storedUserData.fullName;
@@ -175,46 +175,46 @@ function loadUserProfile() {
     document.getElementById('phone').value = storedUserData.phone;
     document.getElementById('address').value = storedUserData.address;
 
-    // Save initial user data to localStorage if not already there
+    
     if (!localStorage.getItem('userData')) {
         localStorage.setItem('userData', JSON.stringify(storedUserData));
     }
 }
 
-// Setup event listeners
+
 function setupEventListeners() {
-    // Mobile menu toggle
+    
     mobileMenuToggle.addEventListener('click', () => {
         sidebar.classList.toggle('open');
     });
 
-    // Navigation links
+    
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
-            // Update active link
+            
             navLinks.forEach(l => l.classList.remove('active'));
             link.classList.add('active');
 
-            // Show corresponding section
+            
             const sectionId = link.dataset.section;
             const sections = document.querySelectorAll('.dashboard-section');
             sections.forEach(s => s.classList.remove('active'));
             document.getElementById(sectionId).classList.add('active');
 
-            // Close mobile menu after selection
+            
             sidebar.classList.remove('open');
         });
     });
 
-    // Logout button
+    
     logoutButton.addEventListener('click', () => {
         localStorage.removeItem('isLoggedIn');
         alert('Logged out successfully. Redirecting to login page...');
-        // In a real app, redirect to login page
-        // window.location.href = 'login.html';
+        
+        
     });
 
-    // Remove wishlist items
+    
     wishlistContainer.addEventListener('click', (e) => {
         if (e.target.classList.contains('remove-wishlist')) {
             const itemId = e.target.dataset.id;
@@ -222,7 +222,7 @@ function setupEventListeners() {
         }
     });
 
-    // Personal info form submission
+    
     personalInfoForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
@@ -233,20 +233,20 @@ function setupEventListeners() {
             address: document.getElementById('address').value
         };
 
-        // Save to localStorage
+        
         localStorage.setItem('userData', JSON.stringify(userData));
 
-        // Show success message
+        
         personalInfoMessage.className = 'message success';
         personalInfoMessage.textContent = 'Personal information updated successfully!';
 
-        // Hide message after 3 seconds
+        
         setTimeout(() => {
             personalInfoMessage.className = 'message';
         }, 3000);
     });
 
-    // Password form submission
+    
     passwordForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
@@ -254,7 +254,7 @@ function setupEventListeners() {
         const newPassword = document.getElementById('newPassword').value;
         const confirmPassword = document.getElementById('confirmPassword').value;
 
-        // Basic validation
+        
         if (newPassword.length < 8) {
             passwordMessage.className = 'message error';
             passwordMessage.textContent = 'Password must be at least 8 characters long';
@@ -267,38 +267,38 @@ function setupEventListeners() {
             return;
         }
 
-        // Mock password check - in real app this would check against stored password
+        
         if (currentPassword.length < 1) {
             passwordMessage.className = 'message error';
             passwordMessage.textContent = 'Current password is required';
             return;
         }
 
-        // Show success and reset form
+        
         passwordMessage.className = 'message success';
         passwordMessage.textContent = 'Password updated successfully!';
         passwordForm.reset();
 
-        // Hide message after 3 seconds
+        
         setTimeout(() => {
             passwordMessage.className = 'message';
         }, 3000);
     });
 }
 
-// Remove item from wishlist
+
 function removeFromWishlist(itemId) {
     const currentWishlist = JSON.parse(localStorage.getItem('wishlist'));
     const updatedWishlist = currentWishlist.filter(item => item.id !== itemId);
 
     localStorage.setItem('wishlist', JSON.stringify(updatedWishlist));
 
-    // Remove from DOM
+    
     const itemToRemove = document.querySelector(`.wishlist-item[data-id="${itemId}"]`);
     if (itemToRemove) {
         itemToRemove.remove();
     }
 }
 
-// Initialize the dashboard on page load
+
 document.addEventListener('DOMContentLoaded', initDashboard);
