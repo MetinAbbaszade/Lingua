@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechElite - Electronics Shop</title>
+    <link rel="stylesheet" href="./style.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>LINGUA</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">Shop</a></li>
+                    <li><a href="../about/index.html">About</a></li>
+                    <li><a href="../contact/index.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="cart-icon">
+                <a href="../cart/index.html">
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+                <span class="cart-count">0</span>
+            </div>
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars" id="menu-toggle"></i>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Mobile filter button -->
+        <div class="mobile-filter-toggle">
+            <button id="filter-toggle-btn">
+                <i class="fas fa-filter"></i> Filters
+            </button>
+        </div>
+
+        <div class="shop-layout">
+            <!-- Sidebar with filters -->
+            <aside class="sidebar" id="sidebar">
+                <div class="sidebar-header">
+                    <h2>Filters</h2>
+                    <button id="close-sidebar" class="close-btn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+
+                <!-- Categories -->
+                <div class="filter-section">
+                    <h3>Categories</h3>
+                    <div class="filter-options">
+                        <label class="filter-option">
+                            <input type="checkbox" name="category" value="phone">
+                            <span class="checkmark"></span>
+                            Phones
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="category" value="tablet">
+                            <span class="checkmark"></span>
+                            Tablets
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="category" value="laptop">
+                            <span class="checkmark"></span>
+                            Laptops
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="category" value="accessory">
+                            <span class="checkmark"></span>
+                            Accessories
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="category" value="smartwatch">
+                            <span class="checkmark"></span>
+                            Smartwatches
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Brands -->
+                <div class="filter-section">
+                    <h3>Brands</h3>
+                    <div class="filter-options">
+                        <label class="filter-option">
+                            <input type="checkbox" name="brand" value="apple">
+                            <span class="checkmark"></span>
+                            Apple
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="brand" value="samsung">
+                            <span class="checkmark"></span>
+                            Samsung
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="brand" value="google">
+                            <span class="checkmark"></span>
+                            Google
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="brand" value="dell">
+                            <span class="checkmark"></span>
+                            Dell
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="brand" value="hp">
+                            <span class="checkmark"></span>
+                            HP
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Price Range -->
+                <div class="filter-section">
+                    <h3>Price Range</h3>
+                    <div class="price-inputs">
+                        <input type="number" id="min-price" placeholder="Min" min="0">
+                        <span>-</span>
+                        <input type="number" id="max-price" placeholder="Max" min="0">
+                    </div>
+                    <button id="apply-price" class="apply-btn">Apply</button>
+                </div>
+
+                <!-- Availability -->
+                <div class="filter-section">
+                    <h3>Availability</h3>
+                    <div class="filter-options">
+                        <label class="filter-option">
+                            <input type="checkbox" id="in-stock">
+                            <span class="checkmark"></span>
+                            In Stock Only
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Rating -->
+                <div class="filter-section">
+                    <h3>Rating</h3>
+                    <div class="filter-options">
+                        <label class="filter-option">
+                            <input type="checkbox" name="rating" value="4">
+                            <span class="checkmark"></span>
+                            4★ & Above
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="rating" value="3">
+                            <span class="checkmark"></span>
+                            3★ & Above
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Clear filters button -->
+                <button id="clear-filters" class="clear-btn">Clear All Filters</button>
+            </aside>
+
+            <!-- Main product area -->
+            <section class="products-container">
+                <div class="products-header">
+                    <h2>Products <span id="products-count">(0)</span></h2>
+                    <div class="sort-container">
+                        <label for="sort-select">Sort By:</label>
+                        <select id="sort-select">
+                            <option value="featured">Featured</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="rating">Highest Rated</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="products-grid" class="products-grid">
+                    <!-- Products will be dynamically added here by JavaScript -->
+                </div>
+
+                <div id="no-products-message" class="no-products-message hidden">
+                    <p>No products match your current filter criteria.</p>
+                    <button id="reset-filters">Reset Filters</button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Lingua. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
