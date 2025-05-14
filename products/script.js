@@ -285,7 +285,7 @@ function renderProducts(productsToRender) {
     productsToRender.forEach(product => {
         const productCard = createProductCard(product);
         productCard.onclick = () => {
-            window.location.href = "../productDetail/index.html";
+            window.location.href = `../productDetail/index.html?id=${product.id}`;
         };
         productsGrid.appendChild(productCard);
     });
